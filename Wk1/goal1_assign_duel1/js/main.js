@@ -47,6 +47,46 @@
             console.log(playerOneName + ": "+ playerOneHealth + " " + playerTwoName + ":" + playerTwoHealth);
 
             //check for victor
-          
+            var result = winnerCheck();
+            //logs to console the results of winnerCheck
+            console.log(result);
+            //if else statement for determining weather to go another round if "no winner" or to end if winner/both die
+            if (result==="no winner")
+            {
+                //increases the round number
+                round++;
+                //alerts user of what round is now over
+                alert(playerOneName + ":" + playerOneHealth + "  *ROUND " + round + " OVER" + "*  "+ playerTwoName + ":" + playerTwoHealth);
+                //plays alert to user showing the result of the winnerCheck
+            } else{
+                alert(result);
+                //break out of function
+                break;
+            };
+
+        };
+    };
+
+    //create function to check if there is a winner or if they both died
+    function winnerCheck(){
+        var result="no winner";
+        //if both players health are below 1 they both die
+        if (playerOneHealth<1 && playerTwoHealth<1)
+        {
+            result = "You Both Die";
+            //if player one health is greater than 1 then they WIN
+        } else if(playerOneHealth<1){
+            result =playerTwoName+" WINS!!!"
+            //if player two health is greater than 1 then they WIN
+        } else if (playerTwoHealth<1)
+        {
+            result = playerOneName+" WINS!!!"
+        };
+        //returns result of winnerCheck to var result
+        return result;
+    };
+
+    //program starts here
+    fight();
 
 })();
